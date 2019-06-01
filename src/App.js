@@ -73,11 +73,11 @@ class Head extends Component {
 class Media extends Component {
   render() {
     let isDeletable = false;
-    this.props.item.links.forEach(element => {
-      if (element.rel === "modify") {
-        isDeletable = true;
-      }
-    });
+    // this.props.item.links.forEach(element => {
+    //   if (element.rel === "modify") {
+    //     isDeletable = true;
+    //   }
+    // });
     return (
       <div>
         <img src={this.props.item.url} width={this.props.width} />
