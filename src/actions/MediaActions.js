@@ -16,7 +16,16 @@ export function getMedia() {
   });
 }
 
+export function deleteMedia(id) {
+  axios.delete(`http://localhost:8080/media/${id}`).then(res => {
+    getMedia();
+  });
+}
+
 export function addMedia(url) {
+  dispatcher.dispatch({
+    type: "MEDIA_UPLOADING"
+  });
   axios
     .post("http://localhost:8080/media", JSON.stringify({ url: url }), {
       headers: {
@@ -25,5 +34,10 @@ export function addMedia(url) {
     })
     .then(res => {
       getMedia();
+    })
+    .catch(error => {
+      dispatcher.dispatch({
+        type: "ADD_MEDIA_ERROR"
+      });
     });
 }

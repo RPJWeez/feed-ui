@@ -17,7 +17,7 @@ import {
   ModalBody
 } from "reactstrap";
 import AddMediaModal from "./AddMediaModal";
-import { toggleModal } from "../actions/MediaModalActions";
+import { toggleModal } from "../actions/MediaActions";
 
 const headStyle = {
   backgroundColor: "#e6e6e6",
@@ -38,7 +38,6 @@ export default class TopBar extends React.Component {
     this.setState({
       isOpen: !this.state.isOpen
     });
-    console.log("PAUL");
   }
   render() {
     return (
@@ -51,7 +50,7 @@ export default class TopBar extends React.Component {
         </div> */}
 
         <Navbar className="mb-2" style={headStyle} light expand="md">
-          <NavbarBrand href="/">feed.io</NavbarBrand>
+          <NavbarBrand href="/">Contact Sheet</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
