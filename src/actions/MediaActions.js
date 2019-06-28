@@ -1,6 +1,8 @@
 import dispatcher from "../dispatcher";
 import axios from "axios";
 
+let API_URL = "https://light-table-api.herokuapp.com";
+
 export function toggleModal() {
   dispatcher.dispatch({
     type: "TOGGLE_MODAL"
@@ -8,7 +10,7 @@ export function toggleModal() {
 }
 
 export function getMedia() {
-  axios.get("http://localhost:8080/media").then(response => {
+  axios.get(`${API_URL}/media`).then(response => {
     dispatcher.dispatch({
       type: "REFRESH_MEDIA",
       newMedia: response.data
@@ -17,7 +19,7 @@ export function getMedia() {
 }
 
 export function deleteMedia(id) {
-  axios.delete(`http://localhost:8080/media/${id}`).then(res => {
+  axios.delete(`${API_URL}/media/${id}`).then(res => {
     getMedia();
   });
 }
@@ -27,7 +29,7 @@ export function addMedia(url) {
     type: "MEDIA_UPLOADING"
   });
   axios
-    .post("http://localhost:8080/media", JSON.stringify({ url: url }), {
+    .post(`${API_URL}/media`, JSON.stringify({ url: url }), {
       headers: {
         "Content-Type": "application/json"
       }
